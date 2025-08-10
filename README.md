@@ -39,7 +39,7 @@ python pixel_art_converter.py
 4. **Process Image**: Click "Process Image" to convert the image to pixel art
    - The application reads the color from the center of each grid cell
    - Creates a new image where each grid cell becomes a single pixel
-   - Scales the result back to the original size
+   - The output resolution is based on your pixel size selection (much smaller than original)
 
 5. **Save Result**: Click "Save Result" to save the pixel art image
 
@@ -49,15 +49,16 @@ python pixel_art_converter.py
 2. **Grid Creation**: The application creates a grid where each cell is the size of your selection
 3. **Color Sampling**: For each grid cell, the color at the center point is sampled
 4. **Pixel Art Generation**: A new image is created where each grid cell becomes a single pixel with the sampled color
-5. **Scaling**: The result is scaled back to the original image size for display
+5. **Resolution**: The output image has a resolution based on your pixel size selection, where each grid cell becomes exactly one pixel
 
 ## Tips for Best Results
 
 - **Use zoom controls** to get a precise view when selecting pixel corners
 - Choose points that clearly represent the intended pixel size in the AI-generated image
 - Make sure your selection points are far enough apart to create a meaningful grid
-- The larger the grid size, the more pixelated the result will be
+- The larger the grid size, the more pixelated the result will be and the smaller the output resolution
 - For best results, use images that were intended to be pixel art but have anti-aliasing or blurring
+- The output image will be much smaller than the original - this is correct for true pixel art
 
 ## Requirements
 

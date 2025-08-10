@@ -353,8 +353,11 @@ Zoom Controls:
             self.display_image = pixel_art
             self.update_display()
             
-            self.status_label.config(text="Image processed successfully!")
-            messagebox.showinfo("Success", "Image converted to pixel art!")
+            # Show resolution information
+            original_width, original_height = self.original_image.size
+            pixel_width, pixel_height = pixel_art.size
+            self.status_label.config(text=f"Converted: {original_width}x{original_height} → {pixel_width}x{pixel_height}")
+            messagebox.showinfo("Success", f"Image converted to pixel art!\nResolution: {original_width}x{original_height} → {pixel_width}x{pixel_height}")
             
         except Exception as e:
             messagebox.showerror("Error", f"Error processing image: {str(e)}")
@@ -410,12 +413,9 @@ Zoom Controls:
         # Convert back to PIL Image with original mode to preserve transparency
         pixel_art = Image.fromarray(output_array, mode=original_mode)
         
-        # Scale up to original size for display
-        display_width = grid_cols * self.grid_size
-        display_height = grid_rows * self.grid_size
-        pixel_art_display = pixel_art.resize((display_width, display_height), Image.Resampling.NEAREST)
-        
-        return pixel_art_display
+        # Return the pixel art at its true resolution (no scaling)
+        # Each pixel in the output represents one grid cell from the original
+        return pixel_art
     
     def save_result(self):
         if not self.display_image or self.display_image == self.original_image:
